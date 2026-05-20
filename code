@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdint.h>
+
+// Pin definitions
+#define TRIG_PIN 5
+#define ECHO_PIN 6
+#define BUZZER_PIN 7
+#define TEMP_SENSOR 0
+#define HEART_SENSOR 1
+
+int distance;
+float temperature;
+int heart_rate;
+
+void ultrasonic_sensor() {
+    // Simulated distance reading
+    distance = 35;
+
+    if (distance < 50) {
+        printf("Obstacle detected: %d cm\n", distance);
+        printf("Buzzer ON\n");
+    } else {
+        printf("Path clear\n");
+    }
+}
+
+void temperature_sensor() {
+    // Simulated temperature
+    temperature = 37.2;
+
+    printf("Temperature: %.1f C\n", temperature);
+
+    if (temperature > 38.0) {
+        printf("High temperature alert!\n");
+    }
+}
+
+void heart_sensor() {
+    // Simulated heart rate
+    heart_rate = 82;
+
+    printf("Heart Rate: %d BPM\n", heart_rate);
+
+    if (heart_rate > 100) {
+        printf("Abnormal heart rate alert!\n");
+    }
+}
+
+int main() {
+    printf("Smart Navigation Stick System\n");
+
+    while (1) {
+        ultrasonic_sensor();
+        temperature_sensor();
+        heart_sensor();
+
+        printf("----------------------\n");
+
+        // delay simulation
+        for(long i = 0; i < 1000000; i++);
+    }
+
+    return 0;
+}
